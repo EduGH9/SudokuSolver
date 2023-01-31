@@ -9,7 +9,6 @@ vector<vector<int>> secureNumbers;
 
 vector<vector<int>> readData(); //Creates the sudoku with inputs
 void showSudoku(vector<vector<int>> sudoku); //Prints the sudoku
-void setSecureNumbers(vector<vector<int>> sudoku); //Set the fixed numbers that are on the sudoku
 bool check(vector<vector<int>> sudoku, int row, int col, int val); //Checks if [row][col] = val is possible
 bool writeSudoku(vector<vector<int>>& sudoku, int row, int col); //Set numbers until it gets a true value
 
@@ -17,7 +16,6 @@ int main()
 {
     vector<vector<int>> originalSudoku = readData(); //It builds the sudoku
     cout << "\nOriginal:\n";
-    setSecureNumbers(originalSudoku); //Sets the numbers of the original sudoku which cannot be replaced
     showSudoku(originalSudoku); //Prints the original sudoku
     cout << "\n\nSolution:\n";
 
@@ -51,21 +49,6 @@ void showSudoku(vector<vector<int>> sudoku) {
             cout << sudoku[i][j] << ' ';
         }
         cout << '\n';
-    }
-}
-
-void setSecureNumbers(vector<vector<int>> sudoku) {
-    int n = 9;
-    vector<int> aux;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (sudoku[i][j] != 0) {
-                aux.push_back(i);
-                aux.push_back(j);
-                secureNumbers.push_back(aux);
-                aux.clear();
-            }
-        }
     }
 }
 
